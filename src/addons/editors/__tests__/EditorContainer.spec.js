@@ -20,7 +20,7 @@ describe('Editor Container Tests', () => {
   let fakeColumn = {
     name: 'col1',
     key: 'col1',
-    width: 100
+    width: 100,
     randomAttachedData: {k: 'some user attached object'}
   };
 
