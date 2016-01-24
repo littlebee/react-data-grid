@@ -63,6 +63,7 @@ const Cell = React.createClass({
   },
 
   shouldComponentUpdate(nextProps: any): boolean {
+    return true;
     return this.props.column.width !== nextProps.column.width
     || this.props.column.left !== nextProps.column.left
     || this.props.rowData !== nextProps.rowData
