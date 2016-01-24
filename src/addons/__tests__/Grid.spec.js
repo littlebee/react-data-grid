@@ -593,12 +593,22 @@ describe('Grid', function() {
 
     describe('Cell click', function() {
       beforeEach(function() {
+        spyOn(this.testProps, 'onRowUpdated')
+        this.component.setProps({ onRowUpdated: this.testProps.onRowUpdated });
         this.getCellMetaData().onCellClick({ idx: 2, rowIdx: 2 });
       });
-
+    
       it('should set selected state of grid', function() {
         expect(this.component.state.selected).toEqual({ idx: 2, rowIdx: 2 });
       });
+    
+      // it('should trigger onRowUpdated with correct params', function() {
+      //   const onRowUpdated = this.component.props.onRowUpdated;
+      //   console.log(onRowUpdated.callCount)
+      //   expect(onRowUpdated.callCount).toEqual(1);
+      //   const onRowUpdatedEventArg = onRowUpdated.argsForCall[0][0];
+      //   expect(onRowUpdatedEventArg.key).toEqual('Nav')
+      // });
     });
   });
 

@@ -44,7 +44,9 @@ const EditorContainer = React.createClass({
 
   componentWillUnmount: function() {
     if (!this.changeCommitted && !this.hasEscapeBeenPressed()) {
-      this.commit({key: 'Enter'});
+      // if they pressed enter, tab or arrows those are handled
+      // elsewhere.  This is most likely a click away
+      this.commit({key: 'Nav'});
     }
   },
 
