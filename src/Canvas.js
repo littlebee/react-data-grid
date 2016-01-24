@@ -216,7 +216,7 @@ const Canvas = React.createClass({
       left: 0,
       overflowX: 'auto',
       overflowY: 'scroll',
-      width: this.props.totalWidth + this.state.scrollbarWidth,
+      width: '100%',
       height: this.props.height,
       transform: 'translate3d(0, 0, 0)'
     };
