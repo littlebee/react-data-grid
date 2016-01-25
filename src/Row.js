@@ -31,14 +31,18 @@ const Row = React.createClass({
   },
 
   shouldComponentUpdate(nextProps: any): boolean {
-    return !(ColumnMetrics.sameColumns(this.props.columns, nextProps.columns, ColumnMetrics.sameColumn)) ||
-           this.doesRowContainSelectedCell(this.props)                                                   ||
-           this.doesRowContainSelectedCell(nextProps)                                                    ||
-           this.willRowBeDraggedOver(nextProps)                                                          ||
-           nextProps.row !== this.props.row                                                              ||
-           this.hasRowBeenCopied()                                                                       ||
-           this.props.isSelected !== nextProps.isSelected                                                ||
-           nextProps.height !== this.props.height;
+    // TODO:  need to figure out a way to ask the app using us, maybe though a needsUpdate method
+    // on the rowData if one exists for more complex data handling 
+    return true
+    
+    // return !(ColumnMetrics.sameColumns(this.props.columns, nextProps.columns, ColumnMetrics.sameColumn)) ||
+    //        this.doesRowContainSelectedCell(this.props)                                                   ||
+    //        this.doesRowContainSelectedCell(nextProps)                                                    ||
+    //        this.willRowBeDraggedOver(nextProps)                                                          ||
+    //        nextProps.row !== this.props.row                                                              ||
+    //        this.hasRowBeenCopied()                                                                       ||
+    //        this.props.isSelected !== nextProps.isSelected                                                ||
+    //        nextProps.height !== this.props.height;
   },
 
   handleDragEnter() {
