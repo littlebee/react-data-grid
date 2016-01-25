@@ -63,17 +63,20 @@ const Cell = React.createClass({
   },
 
   shouldComponentUpdate(nextProps: any): boolean {
+    // TODO:  need to figure out a way to ask the app using us, maybe though a needsUpdate method
+    // on the rowData if one exists for more complex data handling 
     return true;
-    return this.props.column.width !== nextProps.column.width
-    || this.props.column.left !== nextProps.column.left
-    || this.props.rowData !== nextProps.rowData
-    || this.props.height !== nextProps.height
-    || this.props.rowIdx !== nextProps.rowIdx
-    || this.isCellSelectionChanging(nextProps)
-    || this.isDraggedCellChanging(nextProps)
-    || this.isCopyCellChanging(nextProps)
-    || this.props.isRowSelected !== nextProps.isRowSelected
-    || this.isSelected();
+    
+    // return this.props.column.width !== nextProps.column.width
+    // || this.props.column.left !== nextProps.column.left
+    // || this.props.rowData !== nextProps.rowData
+    // || this.props.height !== nextProps.height
+    // || this.props.rowIdx !== nextProps.rowIdx
+    // || this.isCellSelectionChanging(nextProps)
+    // || this.isDraggedCellChanging(nextProps)
+    // || this.isCopyCellChanging(nextProps)
+    // || this.props.isRowSelected !== nextProps.isRowSelected
+    // || this.isSelected();
   },
 
   onCellClick() {
