@@ -82,6 +82,7 @@ const Header = React.createClass({
         position: 'absolute',
         top: this.getCombinedHeaderHeights(index),
         left: 0,
+        width: this.props.totalWidth,
         overflow: 'hidden'
       };
 
