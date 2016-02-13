@@ -154,7 +154,8 @@ const Row = React.createClass({
   render(): ?ReactElement {
     let className = joinClasses(
       'react-grid-Row',
-      `react-grid-Row--${this.props.idx % 2 === 0 ? 'even' : 'odd'}`
+      `react-grid-Row--${this.props.idx % 2 === 0 ? 'even' : 'odd'}`,
+      {'row-selected': this.props.isSelected}
     );
 
     let style = {

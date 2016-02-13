@@ -142,6 +142,7 @@ const Cell = React.createClass({
       this.props.column.locked ? 'react-grid-Cell--locked' : null
     );
     let extraClasses = joinClasses({
+      'row-selected': this.props.isRowSelected,
       selected: this.isSelected() && !this.isActive(),
       editing: this.isActive(),
       copied: this.isCopied() || this.wasDraggedOver() || this.isDraggedOverUpwards() || this.isDraggedOverDownwards(),
@@ -287,7 +288,32 @@ const Cell = React.createClass({
 
   checkFocus: function() {
     if (this.isSelected() && !this.isActive()) {
-      ReactDOM.findDOMNode(this).focus();
+      // determine the parent viewport element of this cell
+      let parentViewport = ReactDOM.findDOMNode(this);
+      while (parentViewport != null && parentViewport.className.indexOf('react-grid-Viewport') === -1) {
+        parentViewport = parentViewport.parentElement;
+      }
+      let focusInGrid = false;
+      // if the focus is on the body of the document, the user won't mind if we focus them on a cell
+      if ((document.activeElement == null) || (document.activeElement.nodeName && typeof document.activeElement.nodeName === 'string' && document.activeElement.nodeName.toLowerCase() === 'body')) {
+        focusInGrid = true;
+        // otherwise
+      } else {
+        // only pull focus if the currently focused element is contained within the viewport
+        if (parentViewport) {
+          let focusedParent = document.activeElement;
+          while (focusedParent != null) {
+            if (focusedParent === parentViewport) {
+              focusInGrid = true;
+              break;
+            }
+            focusedParent = focusedParent.parentElement;
+          }
+        }
+      }
+      if (focusInGrid) {
+        ReactDOM.findDOMNode(this).focus();
+      }
     }
   },
 
