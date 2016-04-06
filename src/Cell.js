@@ -331,7 +331,8 @@ const Cell = React.createClass({
       CellContent = <Formatter value={this.props.value} 
         dependentValues={this.getFormatterDependencies()} 
         column={this.props.column}
-        rowData={this.props.rowData}/>;
+        rowData={this.props.rowData}
+        rowIdx={this.props.rowIdx}/>;
     } else {
       CellContent = <SimpleCellFormatter value={this.props.value}/>;
     }
