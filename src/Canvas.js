@@ -261,14 +261,20 @@ const Canvas = React.createClass({
       rows.push(
         this.renderPlaceholder('bottom', (length - displayEnd) * rowHeight));
     }
-
+    
+    var width = this.props.totalWidth;
+    if( width > this.props.width ){
+      // TODO:  this should be props.width + width of the scroll bar itself
+      width = this.props.width + 16;
+    }
+    
     let style = {
       position: 'absolute',
       top: 0,
       left: 0,
       overflowX: 'auto',
       overflowY: 'scroll',
-      width: this.props.totalWidth,
+      width: width,
       height: this.props.height,
       transform: 'translate3d(0, 0, 0)'
     };
