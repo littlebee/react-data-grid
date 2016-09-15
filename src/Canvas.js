@@ -263,7 +263,7 @@ const Canvas = React.createClass({
     }
     
     var width = this.props.totalWidth;
-    if( width > this.props.width ){
+    if( Number.isInteger(width) && Number.isInteger(this.props.width) && width > this.props.width ){
       // TODO:  this should be props.width + width of the scroll bar itself
       width = this.props.width + 16;
     }

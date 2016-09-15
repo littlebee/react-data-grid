@@ -65,12 +65,13 @@ function recalculate(metrics: ColumnMetricsType): ColumnMetricsType {
   }, metrics.totalWidth);
   unallocatedWidth -= getScrollbarSize();
 
+  // compute width for columns which doesn't specify width
+  columns = setDefferedColumnWidths(columns, unallocatedWidth, metrics.minColumnWidth);
+
   let width = columns.filter(c => c.width).reduce((w, column) => {
     return w + column.width;
   }, 0);
 
-  // compute width for columns which doesn't specify width
-  columns = setDefferedColumnWidths(columns, unallocatedWidth, metrics.minColumnWidth);
 
   // compute left offset
   columns = setColumnOffsets(columns);
