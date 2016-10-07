@@ -292,6 +292,8 @@ const ReactDataGrid = React.createClass({
   handleDragEnter(row: any) {
     if (!this.dragEnabled()) { return; }
     let dragged = this.state.dragged;
+    if (dragged == null) { return; }
+      
     dragged.overRowIdx = row;
     this.setState({dragged: dragged});
   },
