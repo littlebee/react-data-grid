@@ -107,7 +107,10 @@ const Canvas = React.createClass({
 
   onScroll(e: any) {
     this.appendScrollShim();
-    let {scrollTop, scrollLeft} = e.target;
+    let {scrollTop, scrollLeft, className} = e.target;
+    if( !(className.split(' ').indexOf('react-grid-Canvas') >= 0) )
+      return;
+    
     let scroll = {scrollTop, scrollLeft};
     // check how far we have scrolled, and if this means we are being taken out of range
     let scrollYRange = Math.abs(this._scroll.scrollTop - scroll.scrollTop) / this.props.rowHeight;
